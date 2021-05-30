@@ -9,7 +9,7 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
     public class searchPage {
 
-    @FindBy (xpath="//input[@ id='input']")
+    @FindBy (xpath ="//input[@type='search']")
     private WebElement searchInput;
 
     @FindBy (css="#search .VkJw6")
