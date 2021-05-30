@@ -1,9 +1,6 @@
 package tests;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -43,6 +40,7 @@ public class googleTests {
     }
 
     @Test
+    @DisplayName("Проверка операций с целыми числами")
     public void test1() {
         searchPage.search ("Калькулятор");
         WebElement element1 = elementCalc.OpenSkobka;
@@ -79,6 +77,7 @@ public class googleTests {
 
 
     @Test
+    @DisplayName("Проверка деления на ноль")
     public void test2() {
         searchPage.search ("Калькулятор");
         WebElement element1 = elementCalc.Button6;
@@ -97,6 +96,7 @@ public class googleTests {
 
 
     @Test
+    @DisplayName("Проверка ошибки при отсутствии значения")
     public void test3() {
         searchPage.search ("Калькулятор");
         WebElement element1 = elementCalc.Sinus;
