@@ -4,7 +4,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import pages.ElementCalc;
 import pages.searchPage;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class googleTests {
@@ -69,8 +69,44 @@ public class googleTests {
         element11.click();
         WebElement element12 = elementCalc.Button5;
         element12.click();
-        assertEquals("(1+2)*3-40/5=", driver.findElement(By.cssSelector ("#search .VkJw6")));
-        assertEquals("1", driver.findElement(By.cssSelector ("#search span[class*='vUGUtc']")));
+        WebElement element13 = elementCalc.Ravno;
+        element13.click();
+        assertAll(
+                () ->   assertEquals("(1+2)*3-40/5=", searchPage.resultsFormula),
+                () ->   assertEquals("1", searchPage.resultsNumber)
+        );
+    }
+
+
+    @Test
+    public void test2() {
+        searchPage.search ("Калькулятор");
+        WebElement element1 = elementCalc.Button6;
+        element1.click();
+        WebElement element2 = elementCalc.Delenie;
+        element2.click();
+        WebElement element3 = elementCalc.Button0;
+        element3.click();
+        WebElement element4 = elementCalc.Ravno;
+        element4.click();
+        assertAll(
+                () ->   assertEquals("6/0=", searchPage.resultsFormula),
+                () ->   assertEquals("Infinity", searchPage.resultsNumber)
+        );
+    }
+
+
+    @Test
+    public void test3() {
+        searchPage.search ("Калькулятор");
+        WebElement element1 = elementCalc.Sinus;
+        element1.click();
+        WebElement element2 = elementCalc.Ravno;
+        element2.click();
+        assertAll(
+                () ->   assertEquals("sin()=", searchPage.resultsFormula),
+                () ->   assertEquals("Error", searchPage.resultsNumber)
+        );
     }
 
     @AfterAll

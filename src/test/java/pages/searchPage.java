@@ -12,8 +12,12 @@ import static org.openqa.selenium.support.PageFactory.initElements;
     @FindBy (xpath="//input[@ id='input']")
     private WebElement searchInput;
 
-    @FindBy (css="#search .OClNZ")
-    public WebElement Calculyator;
+    @FindBy (css="#search .VkJw6")
+    public WebElement resultsFormula;
+
+    @FindBy (css="#search span[class*='vUGUtc']")
+    public WebElement resultsNumber;
+
 
     public searchPage (WebDriver driver) {
         initElements(driver, this);
